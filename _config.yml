@@ -4,7 +4,6 @@ url: https://missing.csail.mit.edu
 
 # Settings
 markdown: kramdown
-theme: minima
 kramdown:
   input: GFM
   hard_wrap: false
