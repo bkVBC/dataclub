@@ -16,8 +16,6 @@ analytics:
   tracking_id: UA-53167467-11
 
 collections:
-  "2019":
-    output: false
   "2020":
     output: true
 
