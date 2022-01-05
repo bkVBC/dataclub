@@ -4,12 +4,11 @@ title: "Security and Cryptography"
 date: 2020-01-28
 ready: true
 video:
-  aspect: 56.25
-  id: tjwobAmnKTo
+    aspect: 56.25
+    id: tjwobAmnKTo
 ---
 
-Last year's [security and privacy lecture](/2019/security/) focused on how you
-can be more secure as a computer _user_. This year, we will focus on security
+We will focus on security
 and cryptography concepts that are relevant in understanding tools covered
 earlier in this class, such as the use of hash functions in Git or key
 derivation functions and symmetric/asymmetric cryptosystems in SSH.
@@ -30,7 +29,7 @@ already use.
 
 # Entropy
 
-[Entropy](https://en.wikipedia.org/wiki/Entropy_(information_theory)) is a
+[Entropy](<https://en.wikipedia.org/wiki/Entropy_(information_theory)>) is a
 measure of randomness. This is useful, for example, when determining the
 strength of a password.
 
@@ -76,7 +75,7 @@ $ printf 'hello' | sha1sum
 aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d
 $ printf 'hello' | sha1sum
 aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d
-$ printf 'Hello' | sha1sum 
+$ printf 'Hello' | sha1sum
 f7ff9e8b7bb2e09b70935a5d785e0cc5d9d0abf0
 ```
 
@@ -85,14 +84,14 @@ random-looking (but deterministic) function (and this is the [ideal model of a
 hash function](https://en.wikipedia.org/wiki/Random_oracle)). A hash function
 has the following properties:
 
-- Deterministic: the same input always generates the same output.
-- Non-invertible: it is hard to find an input `m` such that `hash(m) = h` for
-some desired output `h`.
-- Target collision resistant: given an input `m_1`, it's hard to find a
-different input `m_2` such that `hash(m_1) = hash(m_2)`.
-- Collision resistant: it's hard to find two inputs `m_1` and `m_2` such that
-`hash(m_1) = hash(m_2)` (note that this is a strictly stronger property than
-target collision resistance).
+-   Deterministic: the same input always generates the same output.
+-   Non-invertible: it is hard to find an input `m` such that `hash(m) = h` for
+    some desired output `h`.
+-   Target collision resistant: given an input `m_1`, it's hard to find a
+    different input `m_2` such that `hash(m_1) = hash(m_2)`.
+-   Collision resistant: it's hard to find two inputs `m_1` and `m_2` such that
+    `hash(m_1) = hash(m_2)` (note that this is a strictly stronger property than
+    target collision resistance).
 
 Note: while it may work for certain purposes, SHA-1 is [no
 longer](https://shattered.io/) considered a strong cryptographic hash function.
@@ -104,23 +103,22 @@ security/cryptography.
 
 ## Applications
 
-- Git, for content-addressed storage. The idea of a [hash
-function](https://en.wikipedia.org/wiki/Hash_function) is a more general
-concept (there are non-cryptographic hash functions). Why does Git use a
-cryptographic hash function?
-- A short summary of the contents of a file. Software can often be downloaded
-from (potentially less trustworthy) mirrors, e.g. Linux ISOs, and it would be
-nice to not have to trust them. The official sites usually post hashes
-alongside the download links (that point to third-party mirrors), so that the
-hash can be checked after downloading a file.
-- [Commitment schemes](https://en.wikipedia.org/wiki/Commitment_scheme).
-Suppose you want to commit to a particular value, but reveal the value itself
-later. For example, I want to do a fair coin toss "in my head", without a
-trusted shared coin that two parties can see. I could choose a value `r =
-random()`, and then share `h = sha256(r)`. Then, you could call heads or tails
-(we'll agree that even `r` means heads, and odd `r` means tails). After you
-call, I can reveal my value `r`, and you can confirm that I haven't cheated by
-checking `sha256(r)` matches the hash I shared earlier.
+-   Git, for content-addressed storage. The idea of a [hash
+    function](https://en.wikipedia.org/wiki/Hash_function) is a more general
+    concept (there are non-cryptographic hash functions). Why does Git use a
+    cryptographic hash function?
+-   A short summary of the contents of a file. Software can often be downloaded
+    from (potentially less trustworthy) mirrors, e.g. Linux ISOs, and it would be
+    nice to not have to trust them. The official sites usually post hashes
+    alongside the download links (that point to third-party mirrors), so that the
+    hash can be checked after downloading a file.
+-   [Commitment schemes](https://en.wikipedia.org/wiki/Commitment_scheme).
+    Suppose you want to commit to a particular value, but reveal the value itself
+    later. For example, I want to do a fair coin toss "in my head", without a
+    trusted shared coin that two parties can see. I could choose a value `r = random()`, and then share `h = sha256(r)`. Then, you could call heads or tails
+    (we'll agree that even `r` means heads, and odd `r` means tails). After you
+    call, I can reveal my value `r`, and you can confirm that I haven't cheated by
+    checking `sha256(r)` matches the hash I shared earlier.
 
 # Key derivation functions
 
@@ -132,13 +130,13 @@ slow, in order to slow down offline brute-force attacks.
 
 ## Applications
 
-- Producing keys from passphrases for use in other cryptographic algorithms
-(e.g. symmetric cryptography, see below).
-- Storing login credentials. Storing plaintext passwords is bad; the right
-approach is to generate and store a random
-[salt](https://en.wikipedia.org/wiki/Salt_(cryptography)) `salt = random()` for
-each user, store `KDF(password + salt)`, and verify login attempts by
-re-computing the KDF given the entered password and the stored salt.
+-   Producing keys from passphrases for use in other cryptographic algorithms
+    (e.g. symmetric cryptography, see below).
+-   Storing login credentials. Storing plaintext passwords is bad; the right
+    approach is to generate and store a random
+    [salt](<https://en.wikipedia.org/wiki/Salt_(cryptography)>) `salt = random()` for
+    each user, store `KDF(password + salt)`, and verify login attempts by
+    re-computing the KDF given the entered password and the stored salt.
 
 # Symmetric cryptography
 
@@ -162,9 +160,8 @@ An example of a symmetric cryptosystem in wide use today is
 
 ## Applications
 
-- Encrypting files for storage in an untrusted cloud service. This can be
-combined with KDFs, so you can encrypt a file with a passphrase. Generate `key
-= KDF(passphrase)`, and then store `encrypt(file, key)`.
+-   Encrypting files for storage in an untrusted cloud service. This can be
+    combined with KDFs, so you can encrypt a file with a passphrase. Generate `key = KDF(passphrase)`, and then store `encrypt(file, key)`.
 
 # Asymmetric cryptography
 
@@ -201,19 +198,18 @@ The sign/verify functions have the same properties that you would hope physical
 signatures would have, in that it's hard to forge a signature. No matter the
 message, without the _private_ key, it's hard to produce a signature such that
 `verify(message, signature, public key)` returns true. And of course, the
-verify function has the obvious correctness property that `verify(message,
-sign(message, private key), public key) = true`.
+verify function has the obvious correctness property that `verify(message, sign(message, private key), public key) = true`.
 
 ## Applications
 
-- [PGP email encryption](https://en.wikipedia.org/wiki/Pretty_Good_Privacy).
-People can have their public keys posted online (e.g. in a PGP keyserver, or on
-[Keybase](https://keybase.io/)). Anyone can send them encrypted email.
-- Private messaging. Apps like [Signal](https://signal.org/) and
-[Keybase](https://keybase.io/) use asymmetric keys to establish private
-communication channels.
-- Signing software. Git can have GPG-signed commits and tags. With a posted
-public key, anyone can verify the authenticity of downloaded software.
+-   [PGP email encryption](https://en.wikipedia.org/wiki/Pretty_Good_Privacy).
+    People can have their public keys posted online (e.g. in a PGP keyserver, or on
+    [Keybase](https://keybase.io/)). Anyone can send them encrypted email.
+-   Private messaging. Apps like [Signal](https://signal.org/) and
+    [Keybase](https://keybase.io/) use asymmetric keys to establish private
+    communication channels.
+-   Signing software. Git can have GPG-signed commits and tags. With a posted
+    public key, anyone can verify the authenticity of downloaded software.
 
 ## Key distribution
 
@@ -277,8 +273,7 @@ We've covered the use of SSH and SSH keys in an [earlier
 lecture](/2020/command-line/#remote-machines). Let's look at the cryptography
 aspects of this.
 
-When you run `ssh-keygen`, it generates an asymmetric keypair, `public_key,
-private_key`. This is generated randomly, using entropy provided by the
+When you run `ssh-keygen`, it generates an asymmetric keypair, `public_key, private_key`. This is generated randomly, using entropy provided by the
 operating system (collected from hardware events, etc.). The public key is
 stored as-is (it's public, so keeping it a secret is not important), but at
 rest, the private key should be encrypted on disk. The `ssh-keygen` program
@@ -301,14 +296,14 @@ can allow the client to log in.
 extra topics, if there's time
 
 security concepts, tips
-- biometrics
-- HTTPS
-{% endcomment %}
+
+-   biometrics
+-   HTTPS
+    {% endcomment %}
 
 # Resources
 
-- [Last year's notes](/2019/security/): from when this lecture was more focused on security and privacy as a computer user
-- [Cryptographic Right Answers](https://latacora.micro.blog/2018/04/03/cryptographic-right-answers.html): answers "what crypto should I use for X?" for many common X.
+-   [Cryptographic Right Answers](https://latacora.micro.blog/2018/04/03/cryptographic-right-answers.html): answers "what crypto should I use for X?" for many common X.
 
 # Exercises
 
@@ -333,10 +328,8 @@ security concepts, tips
    hosted at `debian.org`, if you've downloaded the linked file from the
    Argentinean mirror).
 1. **Symmetric cryptography.** Encrypt a file with AES encryption, using
-   [OpenSSL](https://www.openssl.org/): `openssl aes-256-cbc -salt -in {input
-   filename} -out {output filename}`. Look at the contents using `cat` or
-   `hexdump`. Decrypt it with `openssl aes-256-cbc -d -in {input filename} -out
-   {output filename}` and confirm that the contents match the original using
+   [OpenSSL](https://www.openssl.org/): `openssl aes-256-cbc -salt -in {input filename} -out {output filename}`. Look at the contents using `cat` or
+   `hexdump`. Decrypt it with `openssl aes-256-cbc -d -in {input filename} -out {output filename}` and confirm that the contents match the original using
    `cmp`.
 1. **Asymmetric cryptography.**
     1. Set up [SSH
@@ -348,5 +341,4 @@ security concepts, tips
     1. [Set up GPG](https://www.digitalocean.com/community/tutorials/how-to-use-gpg-to-encrypt-and-sign-messages)
     1. Send Anish an encrypted email ([public key](https://keybase.io/anish)).
     1. Sign a Git commit with `git commit -S` or create a signed Git tag with
-       `git tag -s`. Verify the signature on the commit with `git show
-       --show-signature` or on the tag with `git tag -v`.
+       `git tag -s`. Verify the signature on the commit with `git show --show-signature` or on the tag with `git tag -v`.
