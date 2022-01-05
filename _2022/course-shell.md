@@ -1,24 +1,22 @@
 ---
 layout: lecture
 title: "Course overview + the shell"
-date: 2020-01-13
+date: 2022-01-6
 ready: true
 video:
-  aspect: 56.25
-  id: Z56Jmr9Z34Q
+    aspect: 56.25
+    id: Z56Jmr9Z34Q
 ---
 
 # Motivation
 
-As computer scientists, we know that computers are great at aiding in
+Anyone who uses a computer knows that it is great at aiding in
 repetitive tasks. However, far too often, we forget that this applies
 just as much to our _use_ of the computer as it does to the computations
 we want our programs to perform. We have a vast range of tools
 available at our fingertips that enable us to be more productive and
 solve more complex problems when working on any computer-related
-problem. Yet many of us utilize only a small fraction of those tools; we
-only know enough magical incantations by rote to get by, and blindly
-copy-paste commands from the internet when we get stuck.
+problem. Yet many of us utilize only a small fraction of those tools; we only know enough to blindly copy-paste commands from the internet when we get stuck.
 
 This class is an attempt to address this.
 
@@ -26,26 +24,24 @@ We want to teach you how to make the most of the tools you know, show
 you new tools to add to your toolbox, and hopefully instill in you some
 excitement for exploring (and perhaps building) more tools on your own.
 This is what we believe to be the missing semester from most Computer
-Science curricula.
+Science curricula before students learn to code.
 
 # Class structure
 
-The class consists of 11 1-hour lectures, each one centering on a
-[particular topic](/2020/). The lectures are largely independent,
+The class consists of 10 1-hour lectures, each one centering on a
+[particular topic](/2022/). The lectures are largely independent,
 though as the semester goes on we will presume that you are familiar
 with the content from the earlier lectures. We have lecture notes
 online, but there will be a lot of content covered in class (e.g. in the
 form of demos) that may not be in the notes. We will be recording
 lectures and posting the recordings online.
 
-We are trying to cover a lot of ground over the course of just 11 1-hour
+We are trying to cover a lot of ground over the course of just 10 1-hour
 lectures, so the lectures are fairly dense. To allow you some time to
 get familiar with the content at your own pace, each lecture includes a
 set of exercises that guide you through the lecture's key points. After
-each lecture, we are hosting office hours where we will be present to
-help answer any questions you might have. If you are attending the class
-online, you can send us questions at
-[missing-semester@mit.edu](mailto:missing-semester@mit.edu).
+each lecture, please feel free to email us at any point, and we will be happy to answer any questions you might have. You can send us questions at
+[bk@valuebasedconsulting.io](mailto:bk@valuebasedconsulting.io).
 
 Due to the limited time we have, we won't be able to cover all the tools
 in the same level of detail a full-scale class might. Where possible, we
@@ -85,7 +81,7 @@ When you launch your terminal, you will see a _prompt_ that often looks
 a little like this:
 
 ```console
-missing:~$ 
+missing:~$
 ```
 
 This is the main textual interface to the shell. It tells you that you
@@ -98,7 +94,7 @@ most basic command is to execute a program:
 ```console
 missing:~$ date
 Fri 10 Jan 2020 11:49:31 AM EST
-missing:~$ 
+missing:~$
 ```
 
 Here, we executed the `date` program, which (perhaps unsurprisingly)
@@ -129,7 +125,6 @@ execute a command that doesn't match one of its programming keywords, it
 consults an _environment variable_ called `$PATH` that lists which
 directories the shell should search for programs when it is given a
 command:
-
 
 ```console
 missing:~$ echo $PATH
@@ -336,8 +331,7 @@ like `|`, `>`, and `<` are done _by the shell_, not by the individual
 program. `echo` and friends do not "know" about `|`. They just read from
 their input and write to their output, whatever it may be. In the case
 above, the _shell_ (which is authenticated just as your user) tries to
-open the brightness file for writing, before setting that as `sudo
-echo`'s output, but is prevented from doing so since the shell does not
+open the brightness file for writing, before setting that as `sudo echo`'s output, but is prevented from doing so since the shell does not
 run as root. Using this knowledge, we can work around this:
 
 ```console
@@ -372,7 +366,7 @@ We have not written solutions for the exercises. If you are stuck on anything
 in particular, feel free to send us an email describing what you've tried so
 far, and we will try to help you out.
 
- 1. For this course, you need to be using a Unix shell like Bash or ZSH. If you
+1.  For this course, you need to be using a Unix shell like Bash or ZSH. If you
     are on Linux or macOS, you don't have to do anything special. If you are on
     Windows, you need to make sure you are not running cmd.exe or PowerShell;
     you can use [Windows Subsystem for
@@ -381,10 +375,10 @@ far, and we will try to help you out.
     an appropriate shell, you can try the command `echo $SHELL`. If it says
     something like `/bin/bash` or `/usr/bin/zsh`, that means you're running the
     right program.
- 1. Create a new directory called `missing` under `/tmp`.
- 1. Look up the `touch` program. The `man` program is your friend.
- 1. Use `touch` to create a new file called `semester` in `missing`.
- 1. Write the following into that file, one line at a time:
+1.  Create a new directory called `missing` under `/tmp`.
+1.  Look up the `touch` program. The `man` program is your friend.
+1.  Use `touch` to create a new file called `semester` in `missing`.
+1.  Write the following into that file, one line at a time:
     ```
     #!/bin/sh
     curl --head --silent https://missing.csail.mit.edu
@@ -395,22 +389,22 @@ far, and we will try to help you out.
     differently: they will do the trick in this case. See the Bash
     [quoting](https://www.gnu.org/software/bash/manual/html_node/Quoting.html)
     manual page for more information.
- 1. Try to execute the file, i.e. type the path to the script (`./semester`)
+1.  Try to execute the file, i.e. type the path to the script (`./semester`)
     into your shell and press enter. Understand why it doesn't work by
     consulting the output of `ls` (hint: look at the permission bits of the
     file).
- 1. Run the command by explicitly starting the `sh` interpreter, and giving it
+1.  Run the command by explicitly starting the `sh` interpreter, and giving it
     the file `semester` as the first argument, i.e. `sh semester`. Why does
     this work, while `./semester` didn't?
- 1. Look up the `chmod` program (e.g. use `man chmod`).
- 1. Use `chmod` to make it possible to run the command `./semester` rather than
+1.  Look up the `chmod` program (e.g. use `man chmod`).
+1.  Use `chmod` to make it possible to run the command `./semester` rather than
     having to type `sh semester`. How does your shell know that the file is
     supposed to be interpreted using `sh`? See this page on the
-    [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) line for more
+    [shebang](<https://en.wikipedia.org/wiki/Shebang_(Unix)>) line for more
     information.
- 1. Use `|` and `>` to write the "last modified" date output by
+1.  Use `|` and `>` to write the "last modified" date output by
     `semester` into a file called `last-modified.txt` in your home
     directory.
- 1. Write a command that reads out your laptop battery's power level or your
+1.  Write a command that reads out your laptop battery's power level or your
     desktop machine's CPU temperature from `/sys`. Note: if you're a macOS
     user, your OS doesn't have sysfs, so you can skip this exercise.
