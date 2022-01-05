@@ -3,7 +3,7 @@ on:
   push:
   pull_request:
   schedule:
-    - cron: "0 8 * * 6"
+    - cron: '0 8 * * 6'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -36,6 +36,5 @@ jobs:
             https://www.vmware.com/
             https://fossbytes.com/enable-full-disk-encryption-windows-10/
             http://debian.xfree.com.ar/debian-cd/current/amd64/iso-cd/
-            https://wiki.libvirt.org/page/UbuntuKVMWalkthrough
           url_ignore_re: |
             ^http://www.brendangregg.com/
