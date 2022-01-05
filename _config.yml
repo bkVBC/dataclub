@@ -1,6 +1,5 @@
 # Setup
 title: "the missing semester of your cs education"
-url: https://missing.csail.mit.edu
 
 # Settings
 markdown: kramdown
@@ -12,8 +11,6 @@ permalink: /:title/
 future: true
 # safe: true # breaks local rendering if enabled
 timezone: America/New_York
-analytics:
-  tracking_id: UA-53167467-11
 
 collections:
   "2020":
