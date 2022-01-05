@@ -1,5 +1,5 @@
 # Setup
-title: 'the missing semester of your cs education'
+title: "the missing semester of your cs education"
 url: https://missing.csail.mit.edu
 
 # Settings
@@ -16,9 +16,9 @@ analytics:
   tracking_id: UA-53167467-11
 
 collections:
-  '2019':
-    output: true
-  '2020':
+  "2019":
+    output: false
+  "2020":
     output: true
 
 # Excludes
